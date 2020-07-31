@@ -4,7 +4,7 @@ from api.models import Book
 from api.helpers import *
 
 # Handling HTTP request and response(All in this file)
-# Alternatively, you can import the BookController from the controller class
+# Alternatively, you can import the BookController from the controller file
 # And use map these API end points to their respective methods in the BookController object
 
 
