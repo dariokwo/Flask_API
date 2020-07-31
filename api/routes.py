@@ -17,7 +17,7 @@ def one_book(book_id):
         return make_response(jsonify({"status": "Not Found"}), 404)
 
     # Respond with the resource data
-    return make_response(jsonify(book.map_to_json()), 200)
+    return make_response(jsonify(map_book_to_dict(book)), 200)
 
 
 # GET all resources (aka books)
@@ -27,7 +27,7 @@ def all_books():
 
     res = []  # Generate a list of all resources
     for book in books:  # Map all resources to correct format
-        res.append(book.map_to_json())
+        res.append(map_book_to_dict(book))
 
     # Respond with the resources data
     return make_response(jsonify(res), 200)
@@ -46,7 +46,13 @@ def add_book():
 
                 # Create and add book to the database
                 book = Book()
-                book.set_from_json(book_data)
+                book.name = book_data.get("book_name")
+                book.author = book_data.get("book_author")
+                if book_data.get("book_price"):
+                    book.price = book_data.get("book_price")
+                if book_data.get("book_quantity"):
+                    book.price = book_data.get("book_quantity")
+
                 db.session.add(book)
                 db.session.commit()
 
