@@ -1,4 +1,4 @@
-#FLASK API BLUEPRINTS (TEMPLATE)
+# FLASK API (TEMPLATE)
 
 ## This is a Working FLASK API that is well structured with database connections
 
